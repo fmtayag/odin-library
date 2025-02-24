@@ -1,0 +1,20 @@
+/* Background gradients from 
+    https://cssgradient.io/gradient-backgrounds/
+    https://cssgradient.io/swatches/
+*/ 
+
+.bg-purple {
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+.bg-blue {
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+.bg-green {
+    background-image: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
+}
+.bg-kale {
+    background-image: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+}
+.bg-desert {
+    background-image: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+}
