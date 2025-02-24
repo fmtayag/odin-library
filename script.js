@@ -3,6 +3,8 @@
 const ACTION_DELETE = "delete";
 const ACTION_TOGGLE = "toggle";
 const MATERIAL_CLASS = "material-symbols-outlined";
+const ICON_READ = "check_circle";
+const ICON_NOTREAD = "radio_button_unchecked";
 const TXT_READ = "Done Reading";
 const TXT_NOTREAD = "Not Read";
 let auto_id = 0;
@@ -36,7 +38,7 @@ function deleteBook(key) {
 function toggleBook(book, htmlRead, htmlToggle) {
     book.hasBeenRead = book.hasBeenRead ? false : true;
     htmlRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
-    htmlToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
+    htmlToggle.innerText = book.hasBeenRead ? ICON_READ : ICON_NOTREAD;
 }
 
 
@@ -75,7 +77,7 @@ function addBookToDisplay(book, key=0) {
     const iconToggle = document.createElement("span");
     const iconDelete = document.createElement("span");
 
-    iconToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
+    iconToggle.innerText = book.hasBeenRead ? ICON_READ : ICON_NOTREAD;
     iconToggle.classList.add(MATERIAL_CLASS);
     iconToggle.classList.add(color);
 
