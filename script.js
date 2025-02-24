@@ -117,7 +117,7 @@ function deleteBook(key) {
 }
 
 addBookToLibrary("The Martian", "Andy Weir", 320, false);
-addBookToLibrary("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
+addBookToLibrary("Electric Sheep", "Philip K. Dick", 269, false);
 addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
 displayBooks();
 
