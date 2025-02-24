@@ -6,6 +6,7 @@ const MATERIAL_CLASS = "material-symbols-outlined";
 const TXT_SECONDARY_CLASS = "txt-secondary";
 const ICON_READ = "check_circle";
 const ICON_NOTREAD = "radio_button_unchecked";
+const ICON_DELETE = "delete";
 const TXT_READ = "Done Reading";
 const TXT_NOTREAD = "Not Read";
 let auto_id = 0;
@@ -84,7 +85,7 @@ function addBookToDisplay(book, key=0) {
     iconToggle.classList.add(MATERIAL_CLASS);
     iconToggle.classList.add(color);
 
-    iconDelete.innerText = "delete";
+    iconDelete.innerText = ICON_DELETE;
     iconDelete.classList.add(MATERIAL_CLASS);
     iconDelete.classList.add(color);
     
