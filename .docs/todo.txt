@@ -1,0 +1,18 @@
+Actions:
+    - User views books 
+    - User adds new book 
+        - Ask for title, author, no. of pages, has been read 
+    - User toggles 'has been read'
+    - User removes book 
+
+JavaScript
+    - Create book array called myLibrary
+    - Create Book: title, author, no. of pages, has been read
+    - Create addBookToLibrary(): take args, create book from args, store new book into array  
+    - Create displayBook(): gets books, display each book on the page
+
+CSS: 
+    - Styling 
+
+HTML:
+    - Create form to add new books 
