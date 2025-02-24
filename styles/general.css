@@ -61,11 +61,11 @@ span {
 }
 
 .txt-primary {
-    color: var(--txt-primary-clr);
+  color: var(--txt-primary-clr);
 }
 
 .txt-secondary {
-    color: var(--txt-secondary-clr);
+  color: var(--txt-secondary-clr);
 }
 
 #library {
