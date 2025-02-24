@@ -86,11 +86,13 @@ function addBookToDisplay(book, key=0) {
     iconDelete.classList.add(color);
     
     buttonToggle.setAttribute("type", "button");
+    buttonToggle.classList.add("action");
     buttonToggle.dataset.action = ACTION_TOGGLE;
     buttonToggle.append(iconToggle);
     buttonToggle.append(hasBeenRead);
 
     buttonDelete.setAttribute("type", "button");
+    buttonDelete.classList.add("action");
     buttonDelete.dataset.action = ACTION_DELETE;
     buttonDelete.append(iconDelete);
 
@@ -138,21 +140,31 @@ function displayBooks() {
     
 }
 
-/* --- Form --- */
+/* --- Modal and Form --- */
 
-const buttonAddBook = document.querySelector("button[type=submit]");
-buttonAddBook.addEventListener("click", (e) =>
-{
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value;
-    let hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
-    hasBeenRead = hasBeenRead == "true" ? true : false;
+const dialog = document.querySelector("dialog");
+const buttonOpenModel = document.querySelector("#show-modal");
+const buttonCloseModal = document.querySelector("#close-modal");
 
-    const book = addBookToLibrary(title, author, pages, hasBeenRead);
-    addBookToDisplay(book, auto_id);
-    e.preventDefault();
-});
+buttonOpenModel.addEventListener("click", (e) => {
+    dialog.showModal();
+})
+
+buttonCloseModal.addEventListener("click", (e) => {
+    dialog.close();
+})
+// buttonAddBook.addEventListener("click", (e) =>
+// {
+//     const title = document.querySelector("#title").value;
+//     const author = document.querySelector("#author").value;
+//     const pages = document.querySelector("#pages").value;
+//     let hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
+//     hasBeenRead = hasBeenRead == "true" ? true : false;
+
+//     const book = addBookToLibrary(title, author, pages, hasBeenRead);
+//     addBookToDisplay(book, auto_id);
+//     e.preventDefault();
+// });
 
 /* --- Utils --- */
 
