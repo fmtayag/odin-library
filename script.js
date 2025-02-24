@@ -8,7 +8,7 @@ function Book(title, author, pages, hasBeenRead) {
 }
 
 function addBookToLibrary(title, author, pages, hasBeenRead) {
-    book = new Book(title, author, pages, hasBeenRead);
+    const book = new Book(title, author, pages, hasBeenRead);
     myLibrary.push(book);
 }
 
