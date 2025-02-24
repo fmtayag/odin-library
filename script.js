@@ -1,7 +1,17 @@
 const ACTION_DELETE = "delete";
 const ACTION_TOGGLE = "toggle";
+const MATERIAL_CLASS = "material-symbols-outlined";
+const TXT_READ = "Finished Reading";
+const TXT_NOTREAD = "Not Read";
 let auto_id = 0;
 const myLibrary = {};
+
+addBookToLibrary("The Martian", "Andy Weir", 320, false);
+addBookToLibrary("Electric Sheep", "Philip K. Dick", 269, false);
+addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
+displayBooks();
+
+/* --- MODEL and CRUD --- */
 
 function Book(title, author, pages, hasBeenRead) {
     this.title = title; 
@@ -17,8 +27,18 @@ function addBookToLibrary(title, author, pages, hasBeenRead) {
     return book;
 }
 
-function addBookToDisplay(book, key=0) {
+function deleteBook(key) {
+    delete myLibrary[key];
+}
 
+function toggleBook(book, htmlRead, htmlToggle) {
+    book.hasBeenRead = book.hasBeenRead ? false : true;
+    htmlRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
+    htmlToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
+}
+
+
+function addBookToDisplay(book, key=0) {
     // -- General
     const library = document.querySelector("#library");
     const card = document.createElement("div");
@@ -27,7 +47,7 @@ function addBookToDisplay(book, key=0) {
     // -- Logo group
     const logo = document.createElement("div");
     logo.classList.add("logo");
-    logo.classList.add(color); // TODO: Randomize color
+    logo.classList.add(color);
 
     // -- Content group
     const content = document.createElement("div");
@@ -37,35 +57,36 @@ function addBookToDisplay(book, key=0) {
     const pages = document.createElement("p");
     const hasBeenRead = document.createElement("p");
 
+    title.textContent = book.title;
+    author.textContent = book.author;
+    pages.textContent = `${book.pages} pages`;
+    hasBeenRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
+
     // -- Actions group
-    const materialClass = "material-symbols-outlined";
+
     const actions = document.createElement("div");
     actions.classList.add("actions");
 
     const buttonToggle = document.createElement("button");
     const buttonDelete = document.createElement("button");
     const iconToggle = document.createElement("span");
-    iconToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
-    iconToggle.classList.add(materialClass);
-    iconToggle.classList.add(color);
     const iconDelete = document.createElement("span");
+
+    iconToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
+    iconToggle.classList.add(MATERIAL_CLASS);
+    iconToggle.classList.add(color);
+
     iconDelete.innerText = "delete";
-    iconDelete.classList.add(materialClass);
+    iconDelete.classList.add(MATERIAL_CLASS);
     iconDelete.classList.add(color);
     
-    // buttonToggle.textContent = "Toggle Read";
     buttonToggle.setAttribute("type", "button");
     buttonToggle.dataset.action = ACTION_TOGGLE;
     buttonToggle.append(iconToggle);
-    // buttonDelete.textContent = "Delete";
+
     buttonDelete.setAttribute("type", "button");
     buttonDelete.dataset.action = ACTION_DELETE;
     buttonDelete.append(iconDelete);
-
-    title.textContent = book.title;
-    author.textContent = book.author;
-    pages.textContent = `${book.pages} pages`;
-    hasBeenRead.textContent = book.hasBeenRead ? "Finished Reading" : "Not Read";
 
     // -- Assemble card
     actions.append(buttonToggle);
@@ -95,9 +116,7 @@ function addBookToDisplay(book, key=0) {
                 container.removeChild(card);
                 break;
             case ACTION_TOGGLE:
-                book.hasBeenRead = book.hasBeenRead ? false : true;
-                hasBeenRead.textContent = book.hasBeenRead ? "Finished Reading" : "Not Read";
-                iconToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
+                toggleBook(book, hasBeenRead, iconToggle);
                 break;
         }
     });
@@ -114,14 +133,7 @@ function displayBooks() {
     
 }
 
-function deleteBook(key) {
-    delete myLibrary[key];
-}
-
-addBookToLibrary("The Martian", "Andy Weir", 320, false);
-addBookToLibrary("Electric Sheep", "Philip K. Dick", 269, false);
-addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
-displayBooks();
+/* --- Form --- */
 
 const buttonAddBook = document.querySelector("button[type=submit]");
 buttonAddBook.addEventListener("click", (e) =>
@@ -136,6 +148,8 @@ buttonAddBook.addEventListener("click", (e) =>
     addBookToDisplay(book, auto_id);
     e.preventDefault();
 });
+
+/* --- Utils --- */
 
 function pickColor() {
     const COLORS = ["bg-purple", "bg-blue", "bg-green", "bg-kale", "bg-desert"];
