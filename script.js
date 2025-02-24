@@ -28,8 +28,10 @@ function addBookToDisplay(book, key=0) {
     const buttonDelete = document.createElement("button");
     
     buttonToggle.textContent = "Toggle Read";
-    buttonDelete.textContent = "Delete";
+    buttonToggle.setAttribute("type", "button");
     buttonToggle.dataset.action = ACTION_TOGGLE;
+    buttonDelete.textContent = "Delete";
+    buttonDelete.setAttribute("type", "button");
     buttonDelete.dataset.action = ACTION_DELETE;
 
     title.textContent = book.title;
