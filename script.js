@@ -3,7 +3,7 @@
 const ACTION_DELETE = "delete";
 const ACTION_TOGGLE = "toggle";
 const MATERIAL_CLASS = "material-symbols-outlined";
-const TXT_READ = "Finished Reading";
+const TXT_READ = "Done Reading";
 const TXT_NOTREAD = "Not Read";
 let auto_id = 0;
 const myLibrary = {};
@@ -57,17 +57,18 @@ function addBookToDisplay(book, key=0) {
     const title = document.createElement("h2");
     const author = document.createElement("p");
     const pages = document.createElement("p");
-    const hasBeenRead = document.createElement("p");
 
     title.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = `${book.pages} pages`;
-    hasBeenRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
 
     // -- Actions group
 
     const actions = document.createElement("div");
     actions.classList.add("actions");
+
+    const hasBeenRead = document.createElement("span");
+    hasBeenRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
 
     const buttonToggle = document.createElement("button");
     const buttonDelete = document.createElement("button");
@@ -85,6 +86,7 @@ function addBookToDisplay(book, key=0) {
     buttonToggle.setAttribute("type", "button");
     buttonToggle.dataset.action = ACTION_TOGGLE;
     buttonToggle.append(iconToggle);
+    buttonToggle.append(hasBeenRead);
 
     buttonDelete.setAttribute("type", "button");
     buttonDelete.dataset.action = ACTION_DELETE;
@@ -96,7 +98,6 @@ function addBookToDisplay(book, key=0) {
     content.append(title);
     content.append(author);
     content.append(pages);
-    content.append(hasBeenRead);
 
     card.append(logo);
     card.append(content);
