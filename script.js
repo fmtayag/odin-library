@@ -11,6 +11,7 @@ function Book(title, author, pages, hasBeenRead) {
 }
 
 function addBookToLibrary(title, author, pages, hasBeenRead) {
+    console.log(hasBeenRead);
     const book = new Book(title, author, pages, hasBeenRead);
     myLibrary[++auto_id] = book;
     return book;
@@ -44,7 +45,7 @@ function addBookToDisplay(book, key=0) {
     const buttonToggle = document.createElement("button");
     const buttonDelete = document.createElement("button");
     const iconToggle = document.createElement("span");
-    iconToggle.innerText = "check_circle";
+    iconToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
     iconToggle.classList.add(materialClass);
     iconToggle.classList.add(color);
     const iconDelete = document.createElement("span");
@@ -96,6 +97,7 @@ function addBookToDisplay(book, key=0) {
             case ACTION_TOGGLE:
                 book.hasBeenRead = book.hasBeenRead ? false : true;
                 hasBeenRead.textContent = book.hasBeenRead ? "Finished Reading" : "Not Read";
+                iconToggle.innerText = book.hasBeenRead ? "radio_button_checked" : "radio_button_unchecked";
                 break;
         }
     });
@@ -127,9 +129,10 @@ buttonAddBook.addEventListener("click", (e) =>
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value;
-    const hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
+    let hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
+    hasBeenRead = hasBeenRead == "true" ? true : false;
 
-    const book = addBookToLibrary(title, author, pages, Boolean(hasBeenRead));
+    const book = addBookToLibrary(title, author, pages, hasBeenRead);
     addBookToDisplay(book, auto_id);
     e.preventDefault();
 });
