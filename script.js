@@ -18,7 +18,7 @@ function addBookToLibrary(title, author, pages, hasBeenRead) {
 
 function addBookToDisplay(book, key=0) {
     const table = document.querySelector("#library");
-    const row = document.createElement("div");
+    const card = document.createElement("div");
     const title = document.createElement("h2");
     const author = document.createElement("p");
     const pages = document.createElement("p");
@@ -39,21 +39,22 @@ function addBookToDisplay(book, key=0) {
 
     buttonsContainer.append(buttonDelete);
     buttonsContainer.append(buttonToggle);
-    row.append(title);
-    row.append(author);
-    row.append(pages);
-    row.append(hasBeenRead);
-    row.append(buttonsContainer);
-    row.dataset.key = key
+    card.append(title);
+    card.append(author);
+    card.append(pages);
+    card.append(hasBeenRead);
+    card.append(buttonsContainer);
+    card.dataset.key = key
+    card.classList.add("card");
 
-    row.addEventListener("click", (e) => {
-        const container = row.parentNode; 
-        const bookKey = row.dataset.key;
+    card.addEventListener("click", (e) => {
+        const container = card.parentNode; 
+        const bookKey = card.dataset.key;
         const action = e.target.dataset.action;
         switch(action) {
             case ACTION_DELETE:
                 deleteBook(bookKey);
-                container.removeChild(row);
+                container.removeChild(card);
                 break;
             case ACTION_TOGGLE:
                 book.hasBeenRead = book.hasBeenRead ? false : true;
@@ -62,7 +63,7 @@ function addBookToDisplay(book, key=0) {
         }
     });
 
-    table.append(row);
+    table.append(card);
 }
 
 function displayBooks() {
