@@ -156,15 +156,21 @@ buttonCloseModal.addEventListener("click", (e) => {
 })
 buttonAddBook.addEventListener("click", (e) =>
 {
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value;
-    let hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
-    hasBeenRead = hasBeenRead == "true" ? true : false;
+    let title = document.querySelector("#title");
+    let author = document.querySelector("#author");
+    let pages = document.querySelector("#pages");
+    let htmlRadio = document.querySelector("input[name=book_read]:checked");
+    let hasBeenRead = htmlRadio.value == "true" ? true : false;
 
-    const book = addBookToLibrary(title, author, pages, hasBeenRead);
+    const book = addBookToLibrary(title.value, author.value, pages.value, hasBeenRead);
     addBookToDisplay(book, auto_id);
     e.preventDefault();
+
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    htmlRadio.checked = false;
+    dialog.close();
 });
 
 /* --- Utils --- */
