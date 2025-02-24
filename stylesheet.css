@@ -79,9 +79,9 @@ button[type=button] {
 }
 
 button[type=button]:hover {
-    cursor:pointer;
-
+    
     & span {
+        cursor:pointer;
         opacity: 0.8;
         rotate: 15deg;
 
