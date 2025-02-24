@@ -1,9 +1,10 @@
 .card {
     --border-radius: 32px;
+    
     background-color: white;
     box-shadow: 5px 5px 12px -10px black;
     border-radius: var(--border-radius);
-    /* border: 1px solid gainsboro; */
+
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -12,7 +13,6 @@
     height: 350px;
 
     & .logo {
-        /* border-radius-: ; */
         border-top-left-radius: var(--border-radius);
         border-top-right-radius: var(--border-radius);
         
@@ -24,7 +24,7 @@
     }
     
     & .content {
-        flex: 5 1;
+        flex: 5 1 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -53,6 +53,7 @@
         display: flex;
         align-items: end;
         justify-content: space-between;
+
         margin: 0.25em;
     }
 }
