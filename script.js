@@ -47,7 +47,7 @@ function addBookToDisplay(book, key=0) {
     card.append(hasBeenRead);
     card.append(buttonsContainer);
     card.dataset.key = key
-    card.classList.add("card");
+    colorCard(card);
 
     card.addEventListener("click", (e) => {
         const container = card.parentNode; 
@@ -98,3 +98,14 @@ buttonAddBook.addEventListener("click", (e) =>
     addBookToDisplay(book, auto_id);
     e.preventDefault();
 });
+
+function colorCard(target) {
+    const randomHex = () => Math.floor(Math.random() * 255);
+    const r = randomHex();
+    const g = randomHex();
+    const b = randomHex();
+    const color = `rgb(${r}, ${g}, ${b})`;
+
+    target.style["background-color"] = color;
+    target.classList.add("colored");
+}
