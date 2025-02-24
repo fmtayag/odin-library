@@ -19,11 +19,11 @@ function addBookToLibrary(title, author, pages, hasBeenRead) {
 function addBookToDisplay(book, key=0) {
     const table = document.querySelector("#library");
     const row = document.createElement("div");
-    const para = document.createElement("p");
-    const title = document.createElement("span");
-    const author = document.createElement("span");
-    const pages = document.createElement("span");
+    const title = document.createElement("h2");
+    const author = document.createElement("p");
+    const pages = document.createElement("p");
     const hasBeenRead = document.createElement("span");
+    const buttonsContainer = document.createElement("div");
     const buttonToggle = document.createElement("button");
     const buttonDelete = document.createElement("button");
     
@@ -34,17 +34,16 @@ function addBookToDisplay(book, key=0) {
 
     title.textContent = book.title;
     author.textContent = book.author;
-    pages.textContent = book.pages;
+    pages.textContent = `${book.pages} pages`;
     hasBeenRead.textContent = book.hasBeenRead ? "Yes" : "No";
 
-    para.append(title);
-    para.append(author);
-    para.append(pages);
-    para.append(hasBeenRead);
-
-    row.append(para);
-    row.append(buttonToggle);
-    row.append(buttonDelete);
+    buttonsContainer.append(buttonDelete);
+    buttonsContainer.append(buttonToggle);
+    row.append(title);
+    row.append(author);
+    row.append(pages);
+    row.append(hasBeenRead);
+    row.append(buttonsContainer);
     row.dataset.key = key
 
     row.addEventListener("click", (e) => {
