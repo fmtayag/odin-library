@@ -46,6 +46,7 @@ function addBookToDisplay(book, key=0) {
     card.append(pages);
     card.append(hasBeenRead);
     card.append(buttonsContainer);
+    card.classList.add("card");
     card.dataset.key = key
     colorCard(card);
 
