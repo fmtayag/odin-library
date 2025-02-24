@@ -17,38 +17,69 @@ function addBookToLibrary(title, author, pages, hasBeenRead) {
 }
 
 function addBookToDisplay(book, key=0) {
+
+    // -- General
     const table = document.querySelector("#library");
     const card = document.createElement("div");
+    const color = pickColor();
+    
+    // -- Logo group
+    const logo = document.createElement("div");
+    logo.classList.add("logo");
+    logo.classList.add(color); // TODO: Randomize color
+
+    // -- Content group
+    const content = document.createElement("div");
+    content.classList.add("content");
     const title = document.createElement("h2");
     const author = document.createElement("p");
     const pages = document.createElement("p");
     const hasBeenRead = document.createElement("p");
-    const buttonsContainer = document.createElement("div");
+
+    // -- Actions group
+    const materialClass = "material-symbols-outlined";
+    const actions = document.createElement("div");
+    actions.classList.add("actions");
+
     const buttonToggle = document.createElement("button");
     const buttonDelete = document.createElement("button");
+    const iconToggle = document.createElement("span");
+    iconToggle.innerText = "check_circle";
+    iconToggle.classList.add(materialClass);
+    iconToggle.classList.add(color);
+    const iconDelete = document.createElement("span");
+    iconDelete.innerText = "delete";
+    iconDelete.classList.add(materialClass);
+    iconDelete.classList.add(color);
     
-    buttonToggle.textContent = "Toggle Read";
+    // buttonToggle.textContent = "Toggle Read";
     buttonToggle.setAttribute("type", "button");
     buttonToggle.dataset.action = ACTION_TOGGLE;
-    buttonDelete.textContent = "Delete";
+    buttonToggle.append(iconToggle);
+    // buttonDelete.textContent = "Delete";
     buttonDelete.setAttribute("type", "button");
     buttonDelete.dataset.action = ACTION_DELETE;
+    buttonDelete.append(iconDelete);
 
     title.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = `${book.pages} pages`;
     hasBeenRead.textContent = book.hasBeenRead ? "Yes" : "No";
 
-    buttonsContainer.append(buttonDelete);
-    buttonsContainer.append(buttonToggle);
-    card.append(title);
-    card.append(author);
-    card.append(pages);
-    card.append(hasBeenRead);
-    card.append(buttonsContainer);
+    // -- Assemble card
+    actions.append(buttonDelete);
+    actions.append(buttonToggle);
+    content.append(title);
+    content.append(author);
+    content.append(pages);
+    content.append(hasBeenRead);
+
+    card.append(logo);
+    card.append(content);
+    card.append(actions);
     card.classList.add("card");
     card.dataset.key = key
-    colorCard(card);
+    // colorCard(card);
 
     card.addEventListener("click", (e) => {
         const container = card.parentNode; 
@@ -100,14 +131,7 @@ buttonAddBook.addEventListener("click", (e) =>
     e.preventDefault();
 });
 
-function colorCard(target) {
-    const randomHex = () => Math.floor(Math.random() * 255);
-    const r = randomHex();
-    const g = randomHex();
-    const b = randomHex();
-    const color = `rgb(${r}, ${g}, ${b})`;
-
-    // target.style["background-color"] = color;
-    target.style["background-color"] = "white";
-    target.classList.add("colored");
+function pickColor() {
+    const COLORS = ["bg-purple", "bg-blue", "bg-green", "bg-kale", "bg-desert"];
+    return COLORS[Math.floor(Math.random() * COLORS.length)];    
 }
