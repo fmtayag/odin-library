@@ -25,7 +25,7 @@ function Book(title, author, pages, hasBeenRead) {
 }
 
 function addBookToLibrary(title, author, pages, hasBeenRead) {
-    console.log(hasBeenRead);
+    // console.log(hasBeenRead);
     const book = new Book(title, author, pages, hasBeenRead);
     myLibrary[++auto_id] = book;
     return book;
@@ -134,7 +134,7 @@ function addBookToDisplay(book, key=0) {
 function displayBooks() {
     for(const key in myLibrary) {
         const book = myLibrary[key];
-        console.log(key);
+        // console.log(key);
         addBookToDisplay(book, key);
     }
     
