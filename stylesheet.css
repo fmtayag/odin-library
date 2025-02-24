@@ -134,6 +134,33 @@ button.action {
     transform: scale(0.95);
 }
 
+/* --- Modal --- */
+dialog {
+    position: absolute;
+    /* top: 50%; */
+    margin: auto auto;
+    z-index: 1;
+    border: 0;
+    box-shadow: 3px 3px 8px -6px black;
+    border-radius: 16px;
+    padding: 1em;
+
+    & div:nth-of-type(1) { /* Contains title and close button */
+        display: flex;
+        justify-content: space-between;
+    }
+
+    & button#close-modal {
+        border: 0;
+        background: none;
+        color: black;
+    }
+
+    & button#close-modal:hover {
+        cursor: pointer;
+    }
+}
+
 /* Background gradients from 
     https://cssgradient.io/gradient-backgrounds/
     https://cssgradient.io/swatches/
