@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js" defer></script>
+    <!-- <script src="./script.js" defer></script> -->
     <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Odin Library</title>
 </head>
 <body>
     <h1>Welcome to Odin Library</h1>
     <div id="library">
-
+        <div class="card">
+            <div class="logo bg-purple">
+            </div>
+            <div class="content">
+                <h1>Title</h1>
+                <p>Author</p>
+                <p>Pages</p>
+                <p>Finished Reading</p>
+            </div>
+            <div class="actions">
+                <button type="button"><span class="material-symbols-outlined bg-purple" >check_circle</span></button>
+                <button type="button"><span class="material-symbols-outlined bg-purple">delete</span></button>
+            </div>
+        </div>
     </div>
     <form>
         <label for="title">Title: </label>

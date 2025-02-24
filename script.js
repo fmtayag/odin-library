@@ -107,6 +107,7 @@ function colorCard(target) {
     const b = randomHex();
     const color = `rgb(${r}, ${g}, ${b})`;
 
-    target.style["background-color"] = color;
+    // target.style["background-color"] = color;
+    target.style["background-color"] = "white";
     target.classList.add("colored");
 }
