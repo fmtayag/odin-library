@@ -13,21 +13,20 @@ h1, h2, h3, h4, h5, h6, p, label {
     color: #333;
 }
 
-.container {
-    padding: 2em;
+.padding-md {
+    padding: 2rem;
+}
 
-    & > div:nth-of-type(1) {
-        padding: 1em;
-        text-align: center;
-    }
+.txt-center {
+    text-align: center;
 }
 
 #library {
     padding: 1em;
+
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     gap: 1em;
-
     justify-content: center;
 }
 

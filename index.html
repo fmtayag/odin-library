@@ -19,44 +19,44 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <div>
+    <dialog>
+      <div id="header">
+        <h2>Add a new book</h2>
+        <button type="button" id="close-modal">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form method="dialog">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" name="book_title" id="title" />
+        </div>
+        <div>
+          <label for="title">Author</label>
+          <input type="text" name="book_author" id="author" />
+        </div>
+        <div>
+          <label for="title">Pages</label>
+          <input type="number" name="book_pages" id="pages" />
+        </div>
+        <div id="actions">
+          <label>Finished Reading?</label>
+
+          <label for="read_Yes">Yes</label>
+          <input type="radio" name="book_read" id="read_Yes" value="true" />
+          <label for="read_No">No</label>
+          <input type="radio" name="book_read" id="read_No" value="false" />
+        </div>
+
+        <button type="submit" class="btn">Add Book</button>
+      </form>
+    </dialog>
+
+    <div class="padding-md txt-center">
+      <div class="padding-md">
         <h1>Welcome to the Odin Library!</h1>
         <button type="button" class="btn" id="show-modal">Add Book</button>
       </div>
-      <dialog>
-        <div id="header">
-          <h2>Add a new book</h2>
-          <button type="button" id="close-modal">
-            <span class="material-symbols-outlined">close</span>
-          </button>
-        </div>
-        <form method="dialog">
-          <div>
-            <label for="title">Title</label>
-            <input type="text" name="book_title" id="title" />
-          </div>
-          <div>
-            <label for="title">Author</label>
-            <input type="text" name="book_author" id="author" />
-          </div>
-          <div>
-            <label for="title">Pages</label>
-            <input type="number" name="book_pages" id="pages" />
-          </div>
-          <div id="actions">
-            <label>Finished Reading?</label>
-
-            <label for="read_Yes">Yes</label>
-            <input type="radio" name="book_read" id="read_Yes" value="true" />
-            <label for="read_No">No</label>
-            <input type="radio" name="book_read" id="read_No" value="false" />
-          </div>
-
-          <button type="submit" class="btn">Add Book</button>
-        </form>
-      </dialog>
-
       <div id="library"></div>
     </div>
   </body>
