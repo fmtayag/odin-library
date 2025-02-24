@@ -64,11 +64,11 @@ function addBookToDisplay(book, key=0) {
     title.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = `${book.pages} pages`;
-    hasBeenRead.textContent = book.hasBeenRead ? "Yes" : "No";
+    hasBeenRead.textContent = book.hasBeenRead ? "Finished Reading" : "Not Read";
 
     // -- Assemble card
-    actions.append(buttonDelete);
     actions.append(buttonToggle);
+    actions.append(buttonDelete);
     content.append(title);
     content.append(author);
     content.append(pages);
@@ -85,14 +85,17 @@ function addBookToDisplay(book, key=0) {
         const container = card.parentNode; 
         const bookKey = card.dataset.key;
         const action = e.target.dataset.action;
+
+        console.log(container);
         switch(action) {
             case ACTION_DELETE:
+                console.log("Delete");
                 deleteBook(bookKey);
                 container.removeChild(card);
                 break;
             case ACTION_TOGGLE:
                 book.hasBeenRead = book.hasBeenRead ? false : true;
-                hasBeenRead.textContent = book.hasBeenRead ? "Yes" : "No";
+                hasBeenRead.textContent = book.hasBeenRead ? "Finished Reading" : "Not Read";
                 break;
         }
     });
