@@ -32,6 +32,8 @@ h1, h2, h3, h4, h5, h6, p, label {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     gap: 1em;
+
+    justify-content: center;
 }
 
 .card {
@@ -51,7 +53,7 @@ h1, h2, h3, h4, h5, h6, p, label {
         border-top-left-radius: 16px;
         border-top-right-radius: 16px;
     
-        border-bottom-right-radius: 50%;
+        border-bottom-right-radius: 100%;
         width: 100%;
     
         flex: 1 0 auto;
