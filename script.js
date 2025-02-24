@@ -1,3 +1,5 @@
+"use strict"
+
 const ACTION_DELETE = "delete";
 const ACTION_TOGGLE = "toggle";
 const MATERIAL_CLASS = "material-symbols-outlined";
@@ -126,7 +128,7 @@ function addBookToDisplay(book, key=0) {
 
 function displayBooks() {
     for(const key in myLibrary) {
-        book = myLibrary[key];
+        const book = myLibrary[key];
         console.log(key);
         addBookToDisplay(book, key);
     }
