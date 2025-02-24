@@ -12,6 +12,15 @@ function addBookToLibrary(title, author, pages, hasBeenRead) {
     myLibrary.push(book);
 }
 
+function displayBooks() {
+
+}
+
+function deleteBook(index) {
+    myLibrary.splice(index, 1);
+}
+
+
 addBookToLibrary("The Martian", "Andy Weir", 320, false);
 addBookToLibrary("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
 addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
