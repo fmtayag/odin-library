@@ -51,8 +51,7 @@ function addBookToDisplay(book, key=0) {
     
     // -- Logo group
     const logo = document.createElement("div");
-    logo.classList.add("logo");
-    logo.classList.add(color);
+    logo.classList.add("logo", color);
 
     // -- Content group
     const content = document.createElement("div");
@@ -80,18 +79,15 @@ function addBookToDisplay(book, key=0) {
     const iconDelete = document.createElement("span");
 
     iconToggle.innerText = book.hasBeenRead ? ICON_READ : ICON_NOTREAD;
-    iconToggle.classList.add(MATERIAL_CLASS);
-    iconToggle.classList.add(color);
+    iconToggle.classList.add(MATERIAL_CLASS, color);
 
     iconDelete.innerText = ICON_DELETE;
-    iconDelete.classList.add(MATERIAL_CLASS);
-    iconDelete.classList.add(color);
+    iconDelete.classList.add(MATERIAL_CLASS, color);
     
     buttonToggle.setAttribute("type", "button");
     buttonToggle.classList.add("action");
     buttonToggle.dataset.action = ACTION_TOGGLE;
-    buttonToggle.append(iconToggle);
-    buttonToggle.append(hasBeenRead);
+    buttonToggle.append(iconToggle, hasBeenRead);
 
     buttonDelete.setAttribute("type", "button");
     buttonDelete.classList.add("action");
@@ -99,18 +95,11 @@ function addBookToDisplay(book, key=0) {
     buttonDelete.append(iconDelete);
 
     // -- Assemble card
-    actions.append(buttonToggle);
-    actions.append(buttonDelete);
-    content.append(title);
-    content.append(author);
-    content.append(pages);
-
-    card.append(logo);
-    card.append(content);
-    card.append(actions);
+    actions.append(buttonToggle, buttonDelete);
+    content.append(title, author, pages);
+    card.append(logo, content, actions);
     card.classList.add("card");
     card.dataset.key = key
-
     card.addEventListener("click", (e) => {
         const container = library; 
         const bookKey = card.dataset.key;
@@ -129,7 +118,9 @@ function addBookToDisplay(book, key=0) {
         }
     });
 
+    // -- Put it all together
     library.append(card);
+
 }
 
 function displayBooks() {
