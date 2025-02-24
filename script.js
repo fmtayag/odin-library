@@ -3,6 +3,7 @@
 const ACTION_DELETE = "delete";
 const ACTION_TOGGLE = "toggle";
 const MATERIAL_CLASS = "material-symbols-outlined";
+const TXT_SECONDARY_CLASS = "txt-secondary";
 const ICON_READ = "check_circle";
 const ICON_NOTREAD = "radio_button_unchecked";
 const TXT_READ = "Done Reading";
@@ -63,6 +64,8 @@ function addBookToDisplay(book, key=0) {
     title.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = `${book.pages} pages`;
+    author.classList.add(TXT_SECONDARY_CLASS);
+    pages.classList.add(TXT_SECONDARY_CLASS);
 
     // -- Actions group
 

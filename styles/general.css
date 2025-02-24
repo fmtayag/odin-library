@@ -1,5 +1,6 @@
 :root {
   --txt-primary-clr: #333;
+  --txt-secondary-clr: gray;
   --accent-clr: dodgerblue;
 }
 
@@ -57,6 +58,14 @@ span {
 
 .txt-center {
   text-align: center;
+}
+
+.txt-primary {
+    color: var(--txt-primary-clr);
+}
+
+.txt-secondary {
+    color: var(--txt-secondary-clr);
 }
 
 #library {
