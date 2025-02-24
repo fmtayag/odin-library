@@ -78,13 +78,12 @@ button[type=button] {
     }
 }
 
-button[type=button]:hover {
+button[type=button] {
     
-    & span {
+    & span:hover {
         cursor:pointer;
         opacity: 0.8;
         rotate: 15deg;
-
     }
 }
 
