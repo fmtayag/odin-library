@@ -19,7 +19,7 @@ function addBookToLibrary(title, author, pages, hasBeenRead) {
 function addBookToDisplay(book, key=0) {
 
     // -- General
-    const table = document.querySelector("#library");
+    const library = document.querySelector("#library");
     const card = document.createElement("div");
     const color = pickColor();
     
@@ -82,14 +82,14 @@ function addBookToDisplay(book, key=0) {
     // colorCard(card);
 
     card.addEventListener("click", (e) => {
-        const container = card.parentNode; 
+        const container = library; 
         const bookKey = card.dataset.key;
-        const action = e.target.dataset.action;
 
-        console.log(container);
+        const button = e.target.parentNode;
+        const action = button.dataset.action;
+
         switch(action) {
             case ACTION_DELETE:
-                console.log("Delete");
                 deleteBook(bookKey);
                 container.removeChild(card);
                 break;
@@ -100,7 +100,7 @@ function addBookToDisplay(book, key=0) {
         }
     });
 
-    table.append(card);
+    library.append(card);
 }
 
 function displayBooks() {

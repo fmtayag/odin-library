@@ -64,8 +64,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 button[type=button] {
     border: 0;
-    background: none;
-    padding: 8px;
+    /* background-color: red; */
 
     & span {
         border-radius: 100%;
