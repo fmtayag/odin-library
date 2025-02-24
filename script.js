@@ -145,6 +145,7 @@ function displayBooks() {
 const dialog = document.querySelector("dialog");
 const buttonOpenModel = document.querySelector("#show-modal");
 const buttonCloseModal = document.querySelector("#close-modal");
+const buttonAddBook = document.querySelector("button[type=submit]");
 
 buttonOpenModel.addEventListener("click", (e) => {
     dialog.showModal();
@@ -153,18 +154,18 @@ buttonOpenModel.addEventListener("click", (e) => {
 buttonCloseModal.addEventListener("click", (e) => {
     dialog.close();
 })
-// buttonAddBook.addEventListener("click", (e) =>
-// {
-//     const title = document.querySelector("#title").value;
-//     const author = document.querySelector("#author").value;
-//     const pages = document.querySelector("#pages").value;
-//     let hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
-//     hasBeenRead = hasBeenRead == "true" ? true : false;
+buttonAddBook.addEventListener("click", (e) =>
+{
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value;
+    let hasBeenRead = document.querySelector("input[name=book_read]:checked").value;
+    hasBeenRead = hasBeenRead == "true" ? true : false;
 
-//     const book = addBookToLibrary(title, author, pages, hasBeenRead);
-//     addBookToDisplay(book, auto_id);
-//     e.preventDefault();
-// });
+    const book = addBookToLibrary(title, author, pages, hasBeenRead);
+    addBookToDisplay(book, auto_id);
+    e.preventDefault();
+});
 
 /* --- Utils --- */
 
