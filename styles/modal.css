@@ -1,29 +1,13 @@
-/* --- Modal and Form --- */
 dialog {
     position: absolute;
-    /* top: 50%; */
     margin: auto auto;
     z-index: 1;
+
     border: 0;
     box-shadow: 3px 3px 8px -6px black;
     border-radius: 16px;
-    padding: 1em;
+
     width: 40vw;
-
-    & #header { /* Contains title and close button */
-        display: flex;
-        justify-content: space-between;
-    }
-
-    & button#close-modal {
-        border: 0;
-        background: none;
-        color: black;
-    }
-
-    & button#close-modal:hover {
-        cursor: pointer;
-    }
 }
 
 form {
@@ -33,42 +17,29 @@ form {
     & > div {
         margin-top: 1rem;
     }
+}
 
-    & label, input[type=text], input[type=number]  {
-        display: block;
-    }
+label {
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
 
-    & label {
-        color: #333;
-        font-weight: bold;
-        margin-bottom: 0.25rem;
-    }
+input[type=text], input[type=number] {
+    width: 100%;
+    border-radius: 4px;
+    padding: 0.15rem;
+    border: 2px solid gainsboro;
+}
 
-    & input[type=text], input[type=number] {
-        width: 100%;
-        border-radius: 4px;
-        padding: 0.15rem;
-        border: 2px solid gainsboro;
-    }
+input[type=radio] {
+    margin-inline: 0.5rem;
+}
 
-    & #actions {
-        margin-bottom: 1rem;
-    }
+input[type=radio]:checked {
+    accent-color: dodgerblue;
+}
 
-    & #actions > :not(:first-child) {
-        display: inline;
-    }
-
-    & #actions input[type=radio] {
-        margin-inline: 0.5rem;
-    }
-
-    & #actions > input[type=radio]:checked {
-        accent-color: dodgerblue;
-    }
-
-    & button[type=submit] {
-        width: fit-content;
-        margin: 0 auto;
-    }
+& button[type=submit] {
+    width: fit-content;
+    margin: 0 auto;
 }
