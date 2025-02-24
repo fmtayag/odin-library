@@ -27,7 +27,6 @@ function Book(title, author, pages, hasBeenRead) {
 }
 
 function addBookToLibrary(title, author, pages, hasBeenRead) {
-    // console.log(hasBeenRead);
     const book = new Book(title, author, pages, hasBeenRead);
     myLibrary[++auto_id] = book;
     return book;
@@ -69,7 +68,6 @@ function addBookToDisplay(book, key=0) {
     pages.classList.add(TXT_SECONDARY_CLASS);
 
     // -- Actions group
-
     const actions = document.createElement("div");
     actions.classList.add("actions");
 
@@ -112,7 +110,6 @@ function addBookToDisplay(book, key=0) {
     card.append(actions);
     card.classList.add("card");
     card.dataset.key = key
-    // colorCard(card);
 
     card.addEventListener("click", (e) => {
         const container = library; 
@@ -138,7 +135,6 @@ function addBookToDisplay(book, key=0) {
 function displayBooks() {
     for(const key in myLibrary) {
         const book = myLibrary[key];
-        // console.log(key);
         addBookToDisplay(book, key);
     }
     
