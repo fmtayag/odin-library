@@ -9,37 +9,38 @@ const ICON_NOTREAD = "radio_button_unchecked";
 const ICON_DELETE = "delete";
 const TXT_READ = "Done Reading";
 const TXT_NOTREAD = "Not Read";
-let auto_id = 0;
-const myLibrary = {};
+
 
 
 /* --- MODEL and CRUD --- */
 
 class Book {
+    static auto_id = 0
+    static myLibrary = {}
+
     constructor(title, author, pages, hasBeenRead) {
         this.title = title; 
         this.author = author;
         this.pages = pages;
         this.hasBeenRead = hasBeenRead;
     }
+
+    static addBook(title, author, pages, hasBeenRead) {
+        const book = new Book(title, author, pages, hasBeenRead);
+        this.myLibrary[++this.auto_id] = book;
+        return book;
+    }
+    
+    static deleteBook(key) {
+        delete this.myLibrary[key];
+    }
 } 
-
-function addBookToLibrary(title, author, pages, hasBeenRead) {
-    const book = new Book(title, author, pages, hasBeenRead);
-    myLibrary[++auto_id] = book;
-    return book;
-}
-
-function deleteBook(key) {
-    delete myLibrary[key];
-}
 
 function toggleBook(book, htmlRead, htmlToggle) {
     book.hasBeenRead = book.hasBeenRead ? false : true;
     htmlRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
     htmlToggle.innerText = book.hasBeenRead ? ICON_READ : ICON_NOTREAD;
 }
-
 
 function addBookToDisplay(book, key=0) {
     // -- General
@@ -122,8 +123,8 @@ function addBookToDisplay(book, key=0) {
 }
 
 function displayBooks() {
-    for(const key in myLibrary) {
-        const book = myLibrary[key];
+    for(const key in Book.myLibrary) {
+        const book = Book.myLibrary[key];
         addBookToDisplay(book, key);
     }
     
@@ -151,8 +152,8 @@ buttonAddBook.addEventListener("click", (e) =>
     let htmlRadio = document.querySelector("input[name=book_read]:checked");
     let hasBeenRead = htmlRadio.value == "true" ? true : false;
 
-    const book = addBookToLibrary(title.value, author.value, pages.value, hasBeenRead);
-    addBookToDisplay(book, auto_id);
+    const book = Book.addBook(title.value, author.value, pages.value, hasBeenRead);
+    addBookToDisplay(book, Book.auto_id);
     e.preventDefault();
 
     title.value = "";
@@ -171,7 +172,7 @@ function pickColor() {
 
 /* --- Driver code --- */
 
-addBookToLibrary("The Martian", "Andy Weir", 320, false);
-addBookToLibrary("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
-addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
+Book.addBook("The Martian", "Andy Weir", 320, false);
+Book.addBook("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
+Book.addBook("Masters of Doom", "David Kushner", 291, true);
 displayBooks();
