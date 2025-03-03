@@ -15,7 +15,7 @@ const TXT_NOTREAD = "Not Read";
 /* --- MODEL and CRUD --- */
 
 class Book {
-    static auto_id = 0
+    static #auto_id = 0
     static myLibrary = {}
 
     constructor(title, author, pages, hasBeenRead) {
@@ -27,12 +27,16 @@ class Book {
 
     static addBook(title, author, pages, hasBeenRead) {
         const book = new Book(title, author, pages, hasBeenRead);
-        this.myLibrary[++this.auto_id] = book;
+        this.myLibrary[++this.#auto_id] = book;
         return book;
     }
     
     static deleteBook(key) {
         delete this.myLibrary[key];
+    }
+
+    static get currentID() {
+        return this.#auto_id;
     }
 } 
 
@@ -127,7 +131,6 @@ function displayBooks() {
         const book = Book.myLibrary[key];
         addBookToDisplay(book, key);
     }
-    
 }
 
 /* --- Modal and Form --- */
@@ -153,7 +156,7 @@ buttonAddBook.addEventListener("click", (e) =>
     let hasBeenRead = htmlRadio.value == "true" ? true : false;
 
     const book = Book.addBook(title.value, author.value, pages.value, hasBeenRead);
-    addBookToDisplay(book, Book.auto_id);
+    addBookToDisplay(book, Book.currentID);
     e.preventDefault();
 
     title.value = "";
