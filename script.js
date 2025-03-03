@@ -53,7 +53,7 @@ class DOMHandler {
         // -- General
         const library = document.querySelector("#library");
         const card = document.createElement("div");
-        const color = pickColor();
+        const color = Utils.pickColor();
         
         // -- Logo group
         const logo = document.createElement("div");
@@ -174,11 +174,11 @@ class Modal {
     }
 }
 
-/* --- Utils --- */
-
-function pickColor() {
-    const COLORS = ["bg-purple", "bg-blue", "bg-green", "bg-kale", "bg-desert"];
-    return COLORS[Math.floor(Math.random() * COLORS.length)];    
+class Utils {
+    static pickColor() {
+        const COLORS = ["bg-purple", "bg-blue", "bg-green", "bg-kale", "bg-desert"];
+        return COLORS[Math.floor(Math.random() * COLORS.length)];    
+    }
 }
 
 /* --- Driver code --- */
