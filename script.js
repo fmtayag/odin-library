@@ -139,36 +139,40 @@ class DOMHandler {
 
 /* --- Modal and Form --- */
 
-const dialog = document.querySelector("dialog");
-const buttonOpenModel = document.querySelector("#show-modal");
-const buttonCloseModal = document.querySelector("#close-modal");
-const buttonAddBook = document.querySelector("button[type=submit]");
+class Modal {
+    constructor() {
+        const dialog = document.querySelector("dialog");
+        const buttonOpenModel = document.querySelector("#show-modal");
+        const buttonCloseModal = document.querySelector("#close-modal");
+        const buttonAddBook = document.querySelector("button[type=submit]");
 
-buttonOpenModel.addEventListener("click", (e) => {
-    dialog.showModal();
-})
+        buttonOpenModel.addEventListener("click", (e) => {
+            dialog.showModal();
+        })
 
-buttonCloseModal.addEventListener("click", (e) => {
-    dialog.close();
-})
-buttonAddBook.addEventListener("click", (e) =>
-{
-    let title = document.querySelector("#title");
-    let author = document.querySelector("#author");
-    let pages = document.querySelector("#pages");
-    let htmlRadio = document.querySelector("input[name=book_read]:checked");
-    let hasBeenRead = htmlRadio.value == "true" ? true : false;
+        buttonCloseModal.addEventListener("click", (e) => {
+            dialog.close();
+        })
+        buttonAddBook.addEventListener("click", (e) =>
+        {
+            let title = document.querySelector("#title");
+            let author = document.querySelector("#author");
+            let pages = document.querySelector("#pages");
+            let htmlRadio = document.querySelector("input[name=book_read]:checked");
+            let hasBeenRead = htmlRadio.value == "true" ? true : false;
 
-    const book = Library.addBook(title.value, author.value, pages.value, hasBeenRead);
-    addBookToDisplay(book, Library.currentID);
-    e.preventDefault();
+            const book = Library.addBook(title.value, author.value, pages.value, hasBeenRead);
+            DOMHandler.addBookToDisplay(book, Library.currentID);
+            e.preventDefault();
 
-    title.value = "";
-    author.value = "";
-    pages.value = "";
-    htmlRadio.checked = false;
-    dialog.close();
-});
+            title.value = "";
+            author.value = "";
+            pages.value = "";
+            htmlRadio.checked = false;
+            dialog.close();
+        });
+    }
+}
 
 /* --- Utils --- */
 
@@ -183,3 +187,4 @@ Library.addBook("The Martian", "Andy Weir", 320, false);
 Library.addBook("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
 Library.addBook("Masters of Doom", "David Kushner", 291, true);
 DOMHandler.displayBooks();
+new Modal();
