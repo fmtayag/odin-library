@@ -111,7 +111,7 @@ class DOMHandler {
 
             switch (action) {
                 case this.ACTION_DELETE:
-                    this.deleteBook(bookKey);
+                    Library.deleteBook(bookKey);
                     container.removeChild(card);
                     break;
                 case this.ACTION_TOGGLE:
