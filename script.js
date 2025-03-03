@@ -14,16 +14,9 @@ const TXT_NOTREAD = "Not Read";
 
 /* --- MODEL and CRUD --- */
 
-class Book {
+class Library {
     static #auto_id = 0
     static myLibrary = {}
-
-    constructor(title, author, pages, hasBeenRead) {
-        this.title = title; 
-        this.author = author;
-        this.pages = pages;
-        this.hasBeenRead = hasBeenRead;
-    }
 
     static addBook(title, author, pages, hasBeenRead) {
         const book = new Book(title, author, pages, hasBeenRead);
@@ -37,6 +30,15 @@ class Book {
 
     static get currentID() {
         return this.#auto_id;
+    }
+}
+
+class Book {
+    constructor(title, author, pages, hasBeenRead) {
+        this.title = title; 
+        this.author = author;
+        this.pages = pages;
+        this.hasBeenRead = hasBeenRead;
     }
 } 
 
@@ -127,8 +129,8 @@ function addBookToDisplay(book, key=0) {
 }
 
 function displayBooks() {
-    for(const key in Book.myLibrary) {
-        const book = Book.myLibrary[key];
+    for(const key in Library.myLibrary) {
+        const book = Library.myLibrary[key];
         addBookToDisplay(book, key);
     }
 }
@@ -155,8 +157,8 @@ buttonAddBook.addEventListener("click", (e) =>
     let htmlRadio = document.querySelector("input[name=book_read]:checked");
     let hasBeenRead = htmlRadio.value == "true" ? true : false;
 
-    const book = Book.addBook(title.value, author.value, pages.value, hasBeenRead);
-    addBookToDisplay(book, Book.currentID);
+    const book = Library.addBook(title.value, author.value, pages.value, hasBeenRead);
+    addBookToDisplay(book, Library.currentID);
     e.preventDefault();
 
     title.value = "";
@@ -175,7 +177,7 @@ function pickColor() {
 
 /* --- Driver code --- */
 
-Book.addBook("The Martian", "Andy Weir", 320, false);
-Book.addBook("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
-Book.addBook("Masters of Doom", "David Kushner", 291, true);
+Library.addBook("The Martian", "Andy Weir", 320, false);
+Library.addBook("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
+Library.addBook("Masters of Doom", "David Kushner", 291, true);
 displayBooks();
