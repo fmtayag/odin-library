@@ -12,19 +12,17 @@ const TXT_NOTREAD = "Not Read";
 let auto_id = 0;
 const myLibrary = {};
 
-addBookToLibrary("The Martian", "Andy Weir", 320, false);
-addBookToLibrary("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
-addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
-displayBooks();
 
 /* --- MODEL and CRUD --- */
 
-function Book(title, author, pages, hasBeenRead) {
-    this.title = title; 
-    this.author = author;
-    this.pages = pages;
-    this.hasBeenRead = hasBeenRead;
-}
+class Book {
+    constructor(title, author, pages, hasBeenRead) {
+        this.title = title; 
+        this.author = author;
+        this.pages = pages;
+        this.hasBeenRead = hasBeenRead;
+    }
+} 
 
 function addBookToLibrary(title, author, pages, hasBeenRead) {
     const book = new Book(title, author, pages, hasBeenRead);
@@ -170,3 +168,10 @@ function pickColor() {
     const COLORS = ["bg-purple", "bg-blue", "bg-green", "bg-kale", "bg-desert"];
     return COLORS[Math.floor(Math.random() * COLORS.length)];    
 }
+
+/* --- Driver code --- */
+
+addBookToLibrary("The Martian", "Andy Weir", 320, false);
+addBookToLibrary("Do Androids Dream of Electric Sheep?", "Philip K. Dick", 269, false);
+addBookToLibrary("Masters of Doom", "David Kushner", 291, true);
+displayBooks();
