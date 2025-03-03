@@ -45,8 +45,8 @@ class DOMHandler {
 
     static toggleBook(book, htmlRead, htmlToggle) {
         book.hasBeenRead = book.hasBeenRead ? false : true;
-        htmlRead.textContent = book.hasBeenRead ? TXT_READ : TXT_NOTREAD;
-        htmlToggle.innerText = book.hasBeenRead ? ICON_READ : ICON_NOTREAD;
+        htmlRead.textContent = book.hasBeenRead ? this.TXT_READ : this.TXT_NOTREAD;
+        htmlToggle.innerText = book.hasBeenRead ? this.ICON_READ : this.ICON_NOTREAD;
     }
     
     static addBookToDisplay(book, key=0) {
@@ -114,12 +114,12 @@ class DOMHandler {
             const action = button.dataset.action;
     
             switch(action) {
-                case ACTION_DELETE:
-                    deleteBook(bookKey);
+                case this.ACTION_DELETE:
+                    this.deleteBook(bookKey);
                     container.removeChild(card);
                     break;
-                case ACTION_TOGGLE:
-                    toggleBook(book, hasBeenRead, iconToggle);
+                case this.ACTION_TOGGLE:
+                    this.toggleBook(book, hasBeenRead, iconToggle);
                     break;
             }
         });
